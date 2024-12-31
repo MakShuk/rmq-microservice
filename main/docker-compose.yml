@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_api
+    ports:
+      - "3001:3001"
+    networks:
+      - message_broker_network
+    environment:
+      - RABBITMQ_URL=amqp://message_broker:5672
+
+volumes:
+  rabbitmq_data:
+    name: rabbitmq_persistent_data
+
+networks:
+  message_broker_network:
+    name: rabbitmq_network
+    driver: bridge

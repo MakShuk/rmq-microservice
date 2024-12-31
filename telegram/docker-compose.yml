@@ -1,0 +1,20 @@
+services:
+  telegram_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram_service
+    environment:
+      - RABBITMQ_URL=amqp://message_broker:5672
+    networks:
+      - message_broker_network
+    restart: unless-stopped
+
+volumes:
+  rabbitmq_data:
+    name: rabbitmq_persistent_data
+
+networks:
+  message_broker_network:
+    name: rabbitmq_network
+    driver: bridge

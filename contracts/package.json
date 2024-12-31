@@ -1,0 +1,22 @@
+{
+  "name": "rabbit-mq-contracts",
+  "version": "1.0.11",
+  "description": "RabbitMQ Contracts",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "class-validator": "^0.14.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0"
+  },
+  "peerDependencies": {
+    "class-validator": "^0.14.0"
+  }
+}
