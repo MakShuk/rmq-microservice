@@ -12,6 +12,7 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
+        "**/Thumbs.db": true,
         "**/node_modules": true,
         "**/dist": true,
         "**/.nx": true,
@@ -22,7 +23,7 @@
         "**/tsconfig.json": true,
         "**/.prettierrc": true,
         "**/.prettierignore": true,
-        "**/package.json": false,
+        "**/package.json": true,
         "**/package-lock.json": true,
         "**/.eslintrc.json": true,
         "**/.eslintignore": true,
@@ -36,9 +37,10 @@
         "**/.gitkeep": true,
         "**/project.json": true,
         "**/tsconfig.build.json": true,
-        "**/.eslintrc.js": false,
+        "**/.eslintrc.js": true,
         "**/nest-cli.json": true,
         ".eslintrc.js": true,
-        "package.json": false
-    }
+        "package.json": true
+    },
+    "hide-files.files": []
 }

@@ -14,7 +14,7 @@ interface MessageContent {
 @Injectable()
 export class TelegramService implements OnModuleInit {
   private readonly QUEUE_TIMEOUT_MS = 35000;
-  private readonly ERROR_MESSAGE = 'Ошибка отправки сообщения в очередь ';
+  private readonly ERROR_MESSAGE = 'Ошибка отправки сообщения в очередь';
 
   constructor(
     private readonly telegrafService: TelegrafService,
