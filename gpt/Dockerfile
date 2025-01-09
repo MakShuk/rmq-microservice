@@ -1,26 +1,39 @@
-FROM node:20 as build
-ENV NODE_ENV=development
+# Этап сборки
+FROM node:18-alpine AS builder
 
-WORKDIR /opt/app/
+WORKDIR /app
 
-# Диагностика npm конфигурации
-RUN echo "Current npm registry:" && npm config get registry
-RUN npm config delete registry
-RUN npm config set registry=https://registry.npmjs.org/
-
+# Копируем файлы зависимостей
 COPY package*.json ./
-RUN npm i 
+
+
+# Устанавливаем зависимости
+RUN npm ci
+
+# Копируем исходный код
 COPY . .
+
+# Собираем приложение
 RUN npm run build
 
-FROM node:20-slim
-ENV NODE_ENV=production
+# Этап production
+FROM node:18-alpine AS production
 
-WORKDIR /opt/app
+WORKDIR /app
+
+# Копируем файлы зависимостей
 COPY package*.json ./
 
 
-RUN npm i --only=production
+# Устанавливаем только production зависимости
+RUN npm ci --only=production
 
-COPY --from=build /opt/app/dist ./dist
-CMD ["npm", "run", "start:prod"]
+# Копируем собранное приложение из этапа сборки
+COPY --from=builder /app/dist ./dist
+
+# Копируем env файлы
+COPY envs/.env.* ./envs/
+
+
+# Запускаем приложение
+CMD ["npm", "run", "start:prod"] 

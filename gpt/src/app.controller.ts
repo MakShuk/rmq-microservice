@@ -11,7 +11,6 @@ export class AppController {
   @RMQValidate()
   @RMQRoute(GptMessage.topic)
   async sendMessage(massageDto: GptMessage.Request): Promise<GptMessage.Response> {
-    console.log(massageDto);
     const gptMessage = (await this.appService.generateText(massageDto.message)) || ``;
     return {
       message: gptMessage,

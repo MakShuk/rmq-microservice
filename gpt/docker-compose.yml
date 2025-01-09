@@ -1,18 +1,22 @@
-version: '3.8'
 services:
-  gpt-service:
-    build:
+  app:
+    build: 
       context: .
       dockerfile: Dockerfile
-    container_name: yandex-gpt-bot
-    restart: always
+    container_name: openai
     networks:
-      - message-broker-network
+      - message_broker_network
     environment:
       - NODE_ENV=production
+      - TZ=Europe/Moscow
     volumes:
-      - ./envs/.env.production:/opt/app/envs/.env.production
+      - ./envs:/app/envs
+    restart: unless-stopped
+volumes:
+  rabbitmq_data:
+    name: rabbitmq_persistent_data
+
 networks:
-  message-broker-network:
-    name: rabbitmq-network
+  message_broker_network:
+    name: rabbitmq_network
     driver: bridge
