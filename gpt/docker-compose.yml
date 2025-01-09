@@ -12,9 +12,6 @@ services:
       - NODE_ENV=production
     volumes:
       - ./envs/.env.production:/opt/app/envs/.env.production
-  #   ports:
-  #    - "3000:3000"  # Если нужен доступ к порту
-
 networks:
   message-broker-network:
     name: rabbitmq-network

@@ -1,16 +1,6 @@
 {
-    "cSpell.words": [
-        "инстанс",
-        "инстанса",
-        "логгера",
-        "логгеру",
-        "резолва",
-        "IRMQ",
-        "Maksim",
-        "networkidle",
-        "Parens",
-        "rymmbg",
-        "Shuklin"
+    "hide-files.files": [
+        "node_modules"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -44,7 +34,7 @@
         "**/project.json": true,
         "**/tsconfig.build.json": true,
         "**/.eslintrc.js": true,
-        "**/nest-cli.json": true
-    },
-    "hide-files.files": []
+        "**/nest-cli.json": true,
+        "node_modules": true
+    }
 }

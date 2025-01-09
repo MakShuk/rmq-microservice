@@ -1,17 +1,18 @@
-import { Body, Controller } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
-import { RMQRoute, RMQValidate } from 'nestjs-rmq';
-import { GptMessage } from '@contracts/message';
+import { GptMessage } from 'rabbit-mq-contracts';
+import { RMQValidate } from 'nestjs-rmq';
+import { RMQRoute } from 'nestjs-rmq';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @RMQValidate()
   @RMQRoute(GptMessage.topic)
-  async sendMessage(@Body() massageDto: GptMessage.Request): Promise<GptMessage.Response> {
+  async sendMessage(massageDto: GptMessage.Request): Promise<GptMessage.Response> {
+    console.log(massageDto);
     const gptMessage = (await this.appService.generateText(massageDto.message)) || ``;
-    
     return {
       message: gptMessage,
       userId: massageDto.userId,

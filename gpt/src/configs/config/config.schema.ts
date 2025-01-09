@@ -22,12 +22,4 @@ export const configValidationSchema = Joi.object({
   OPEN_AI_KEY: Joi.string()
     .description('OpenAI API Key'),
 
-  YA_LOGIN: Joi.string().required().description('Yandex login'),
-  YA_PASSWORD: Joi.string().required().description('Yandex password'),
-  SCREENSHOTS_FOLDER: Joi.string()
-    .default(ENV_VALUES.PATHS.SCREENSHOTS_FOLDER)
-    .description('Folder for screenshots'),
-  COOKIE_FOLDER: Joi.string()
-    .default(ENV_VALUES.PATHS.SCREENSHOTS_FOLDER)
-    .description('Folder for cookies'),
 });

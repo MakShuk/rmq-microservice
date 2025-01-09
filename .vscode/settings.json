@@ -6,9 +6,11 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        ".vscode": true
+        ".vscode": true,
+        "gpt/node_modules": true
     },
     "hide-files.files": [
-        ".vscode"
+        ".vscode",
+        "gpt/node_modules"
     ]
 }

@@ -8,12 +8,18 @@ export class AppService {
   async generateText(prompt: string) {
     try {
       const completion = await this.openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }],
+        model: "gpt-4o",
+        messages: [
+          { role: "developer", content: "You are a helpful assistant." },
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
       });
-
       return completion.choices[0].message.content;
     } catch (error) {
+      console.log(error);
      throw new Error(
        `Failed to generate text: ${error instanceof Error ? error.message : 'Unknown error'}`,
      );

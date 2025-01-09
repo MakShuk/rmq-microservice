@@ -9,7 +9,7 @@ RUN npm config delete registry
 RUN npm config set registry=https://registry.npmjs.org/
 
 COPY package*.json ./
-RUN npm ci 
+RUN npm i 
 COPY . .
 RUN npm run build
 
@@ -19,11 +19,8 @@ ENV NODE_ENV=production
 WORKDIR /opt/app
 COPY package*.json ./
 
-# Принудительная очистка и установка
-RUN npm cache clean --force
-RUN npm config delete registry
-RUN npm config set registry=https://registry.npmjs.org/
-RUN npm ci --only=production
+
+RUN npm i --only=production
 
 COPY --from=build /opt/app/dist ./dist
 CMD ["npm", "run", "start:prod"]
