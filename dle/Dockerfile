@@ -36,4 +36,4 @@ COPY envs/.env.* ./envs/
 
 
 # Запускаем приложение
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:prod"] 

@@ -1,10 +1,6 @@
 {
-    "cSpell.words": [
-        "резолва",
-        "IRMQ",
-        "Maksim",
-        "Parens",
-        "Shuklin"
+    "hide-files.files": [
+        "node_modules"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -40,7 +36,7 @@
         "**/.eslintrc.js": true,
         "**/nest-cli.json": true,
         ".eslintrc.js": true,
-        "package.json": true
-    },
-    "hide-files.files": []
+        "package.json": true,
+        "node_modules": true
+    }
 }

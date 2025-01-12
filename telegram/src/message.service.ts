@@ -7,13 +7,14 @@ export class MessageService {
   constructor(
     @Inject('TELEGRAM_BOT_INSTANCE')
     private readonly bot: Telegraf<Context>,
-  ) {}
+  ) { }
 
   async sendTelegramMessage(message: string, userId: number): Promise<number> {
     try {
-      const massage: Message.TextMessage = await this.bot.telegram.sendMessage(userId, message);
+      const massage: Message.TextMessage = await this.bot.telegram.sendMessage(userId, message, { parse_mode: 'Markdown' });
       return massage.message_id;
     } catch (error) {
+      console.log(error);
       throw new Error('Failed to send a message');
     }
   }

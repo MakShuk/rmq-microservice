@@ -1,9 +1,10 @@
+version: '3'
 services:
   app:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: telegram
+    container_name: dead-letter-service
     networks:
       - message_broker_network
     environment:
@@ -11,6 +12,7 @@ services:
       - TZ=Europe/Moscow
     volumes:
       - ./envs:/app/envs
+      - ./logs:/app/logs
     restart: unless-stopped
 volumes:
   rabbitmq_data:
@@ -19,4 +21,4 @@ volumes:
 networks:
   message_broker_network:
     name: rabbitmq_network
-    driver: bridge 
+    driver: bridge

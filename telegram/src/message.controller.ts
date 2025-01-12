@@ -10,8 +10,9 @@ export class MessageController {
   @RMQValidate()
   @RMQRoute(TelegramSendNewMessage.topic)
   async sendNewMessage(
-    @Body() massageDto: TelegramSendNewMessage.Request,
+   massageDto: TelegramSendNewMessage.Request,
   ): Promise<TelegramSendNewMessage.Response> {
+
     const messageID = await this.messageService.sendTelegramMessage(
       massageDto.message,
       massageDto.userId,

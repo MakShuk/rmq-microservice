@@ -14,7 +14,7 @@ interface OpenAIConfig {
 
 // Константы для токенов инъекций и конфигурации
 export const OPENAI_INSTANCE = 'OPENAI_INSTANCE';
-export const DEFAULT_TIMEOUT = 5000;
+export const DEFAULT_TIMEOUT = 35000;
 
 @Global()
 @Module({})
